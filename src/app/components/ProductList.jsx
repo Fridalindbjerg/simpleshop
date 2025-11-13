@@ -26,7 +26,7 @@ const FetchProduct = async ({ category }) => {
   return products.map((product) => (
     <Link
       key={product.id}
-      href={`/details/${product.id}`}
+      href={`/detail/${product.id}`}
       className="rounded-lg shadow-md"
     >
       <div className="relative">
