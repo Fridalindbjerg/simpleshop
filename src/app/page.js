@@ -2,10 +2,16 @@ import Image from "next/image";
 import ProductList from "./components/ProductList";
 import CategoryList from "./components/CategoryList";
 import { Suspense } from "react";
+import BasketElement from "./components/BasketElement";
+import BasketButton from "./components/BasketButton";
+import Basket from "./components/Basket";
 
 export default function Home({ searchParams }) {
   return (
     <>
+      <div>
+        <Basket />
+      </div>
       <div className="flex">
         <CategoryList />
       </div>
