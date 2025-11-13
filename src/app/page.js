@@ -9,15 +9,15 @@ export default function Home({ searchParams }) {
       <div className="flex">
         <CategoryList />
       </div>
-      <ProductList />;
+
       <Suspense>
-        <CategoryListContainer searchParams={searchParams} />
+        <ProductListContainer searchParams={searchParams} />
       </Suspense>
     </>
   );
 }
 
-async function CategoryListContainer({ searchParams }) {
+async function ProductListContainer({ searchParams }) {
   const { category } = await searchParams;
   return (
     <div className="m-4 grid grid-cols-2 gap-4">
