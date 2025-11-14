@@ -5,19 +5,16 @@ import { MdFavorite } from "react-icons/md";
 
 const ProductCard = ({ productDetails }) => {
   const { basketProducts, addToBasket, removeFromBasket } = useStore();
-
   console.log("in basket:", basketProducts);
 
   return (
-    <button onClick={() => addToBasket(productDetails)}>Add to basket</button>
+    <button
+      onClick={() => addToBasket(productDetails)}
+      className="bg-green-200 p-2 rounded cursor-pointer"
+    >
+      Læg i kurv
+    </button>
   );
-  if (basketProducts.includes(id)) {
-    console.log("Favorite:", id);
-    return <MdFavorite onClick={() => toggleFavorite(id)} />;
-  } else {
-    console.log("Not Favorite:", id);
-    return <MdFavoriteBorder onClick={() => toggleFavorite(id)} />;
-  }
 };
 
 export default ProductCard;

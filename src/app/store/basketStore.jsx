@@ -9,32 +9,27 @@ const useStore = create(
   persist(
     (set, get) => ({
       basketProducts: [],
+
       addToBasket: (product) => {
-        const currentProducts = get().basketProducts;
-        const basketProduct = {
-          ...product,
-        };
-
-        // const productExists =
-        //   currentProducts.filter(
-        //     (currentProduct) => currentProduct.id == product.id,
-        //   ).length > 0
-        //     ? true
-        //     : false;
-
-        set({
-          basketProducts: [...currentProducts, basketProduct],
-        });
-      },
-      removeFromBasket: (product) => {
         const current = get().basketProducts;
         set({
-          basketProducts: current.filter(
-            (inBasket) => inBasket.id !== product.id,
-          ),
+          basketProducts: [...current, product],
+          totalPrice: get().totalPrice + product.price,
+        });
+      },
+
+      removeFromBasket: (id) => {
+        const current = get().basketProducts;
+        set({ basketProducts: current.filter((item) => item.id !== id) });
+
+        set({
+          basketProducts: updatedBasket,
+          totalPrice: get().totalPrice - itemToRemove.price,
         });
       },
     }),
+
+
     {
       name: "basket-storage",
     },
@@ -42,3 +37,21 @@ const useStore = create(
 );
 
 export default useStore;
+
+
+const addToBasket = (product) => {
+  // Logic to add item to the cart
+  setBasketItems([...basketProducts, item]);
+
+  // Logic to update the total price
+  setTotalPrice(totalPrice + item.price);
+}
+
+const removeFromBasket = (products) => {
+  // Logic to remove item from the cart
+  const updatedBasketItems = cartItems.filter((cartItem) => cartItem.id !== item.id);
+  setCartItems(updatedCartItems);
+
+  // Logic to update the total price
+  setTotalPrice(totalPrice - item.price);
+}
