@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CiStar } from "react-icons/ci";
 // import FavoriteElement from "./FavoriteElement";
 import { Suspense } from "react";
+import BasketElement from "./BasketElement";
 
 const ProductList = ({ category }) => {
   return (
@@ -24,13 +25,9 @@ const FetchProduct = async ({ category }) => {
   const { products } = await response.json();
 
   return products.map((product) => (
-    <Link
-      key={product.id}
-      href={`/detail/${product.id}`}
-      className="rounded-lg shadow-md"
-    >
+    <div key={product.id} className="rounded-lg shadow-md">
       <div className="relative">
-        {/* <FavoriteElement id={product.id} /> */}
+        <BasketElement productDetails={product} />
 
         <Image
           loading="eager"
@@ -46,14 +43,16 @@ const FetchProduct = async ({ category }) => {
       </div>
       <div className="p-2">
         <div className="flex justify-between">
-          <h2 className="text-sm font-bold">{product.title}</h2>
+          <h2 className="text-sm font-bold">
+            <Link href={`/details/${product.id}`}>{product.title}</Link>
+          </h2>
           <h3 className="text-xs font-thin text-gray-500">{product.price}</h3>
         </div>
         <h3 className="text-xs font-thin text-gray-500">
           {product.brand ? product.brand : "Unknown"}
         </h3>
       </div>
-    </Link>
+    </div>
   ));
 };
 
