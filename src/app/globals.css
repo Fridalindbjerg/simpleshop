@@ -1,26 +1,58 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream: #f7f6f2;
+  --grey: #efede7;
+  --orange: #f74c25;
+  --font-poppins: "Poppins", "-apple-system", sans-serif;
+
+  --font--2: clamp(0.651rem, 0.1818rem + 2.346vw, 2rem);
+  --font--1: clamp(0.7813rem, 0.1834rem + 2.9891vw, 2.5rem);
+  --font-0: clamp(0.9375rem, 0.1766rem + 3.8043vw, 3.125rem);
+  --font-1: clamp(1.125rem, 0.1576rem + 4.837vw, 3.9063rem);
+  --font-2: clamp(1.35rem, 0.1212rem + 6.144vw, 4.8828rem);
+  --font-3: clamp(1.62rem, 0.0605rem + 7.7974vw, 6.1035rem);
+  --font-4: clamp(1.944rem, -0.0335rem + 9.8876vw, 7.6294rem);
+  --font-5: clamp(2.3328rem, -0.1729rem + 12.5286vw, 9.5367rem);
+
+  --space-3xs: clamp(0.25rem, 0.0543rem + 0.9783vw, 0.8125rem);
+  --space-2xs: clamp(0.5rem, 0.1304rem + 1.8478vw, 1.5625rem);
+  --space-xs: clamp(0.6875rem, 0.1005rem + 2.9348vw, 2.375rem);
+  --space-s: clamp(0.9375rem, 0.1766rem + 3.8043vw, 3.125rem);
+  --space-m: clamp(1.4375rem, 0.3071rem + 5.6522vw, 4.6875rem);
+  --space-l: clamp(1.875rem, 0.3533rem + 7.6087vw, 6.25rem);
+  --space-xl: clamp(2.8125rem, 0.5299rem + 11.413vw, 9.375rem);
+  --space-2xl: clamp(3.75rem, 0.7065rem + 15.2174vw, 12.5rem);
+  --space-3xl: clamp(5.625rem, 1.0598rem + 22.8261vw, 18.75rem);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+/* @theme inline {
+  --color-background: var(--cream);
+  /* --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-mono: var(--font-geist-mono); 
 } */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--orange);
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-size: var(--font-3);
+  font-weight: 400;
+}
+h2 {
+  font-size: var(--font-1);
+  font-weight: 400;
+}
+h3 {
+  font-size: var(--font--1);
+  font-weight: 400;
+}
+
+p {
+  font-size: var(--font--2);
+  font-weight: 400;
 }

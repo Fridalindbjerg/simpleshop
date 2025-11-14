@@ -43,14 +43,12 @@ const FetchProduct = async ({ category }) => {
       </div>
       <div className="p-2">
         <div className="flex justify-between">
-          <h2 className="text-sm font-bold">
-            <Link href={`/details/${product.id}`}>{product.title}</Link>
+          <h2>
+            <Link href={`/detail/${product.id}`}>{product.title}</Link>
           </h2>
-          <h3 className="text-xs font-thin text-gray-500">{product.price}</h3>
+          <h3>{product.price}</h3>
         </div>
-        <h3 className="text-xs font-thin text-gray-500">
-          {product.brand ? product.brand : "Unknown"}
-        </h3>
+        <h3>{product.brand ? product.brand : "Unknown"}</h3>
       </div>
     </div>
   ));
