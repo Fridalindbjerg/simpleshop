@@ -4,9 +4,10 @@ import useStore from "../store/basketStore";
 const Basket = () => {
   const { basketProducts, addToBasket, removeFromBasket } = useStore();
 
-  const totalPrice = basketProducts.reduce((sum, item) => {
-    return sum + Number(item.price) * item.quantity;
-  }, 0);
+  const totalPrice = basketProducts.reduce(
+    (sum, item) => sum + Number(item.price),
+    0
+  );
 
   //   1.Filtrer på de individuelle produkter i kurven for at få længden af arrayet (som er kvantiteten)
   //   2.Vis denne længde i BasketButton komponenten ved siden af "Kurv" teksten
@@ -27,29 +28,28 @@ const Basket = () => {
                 key={item.id}>
                 <button
                   onClick={() => removeFromBasket(item.id)}
-                  className="text-black-500 font-bold hover:text-black-700"
+                  className="text-black-500 font-bold hover:text-black-700 cursor-pointer"
                 >
                   ×
                 </button>
                 <div className="flex flex-col">
                   <span>{ }</span>
                   <span className="flex font-medium text-gray-800 ml-2">{item.title}</span>
-                  {/* <span className="text-sm text-gray-500">x{item.quantity}</span> */}
                 </div>
-                <span className="font-semibold text-gray-700">
+                <span className="font-semibold text-gray-500">
                   ${item.price}
                 </span>
               </li>
             );
           })}
-          <div className="flex justify-between font-semibold mb-4">
+          <div className="flex justify-between font-semibold mt-6">
             <span>Total</span>
-            <span>$</span>
+            <span>${totalPrice}</span>
           </div>
         </ul>
       )
       }
-      <button className="w-full mt-2 bg-gray-200 hover:bg-gray-300 text-gray-900 font-semibold py-2 rounded-lg border border-gray-400 transition">
+      <button className="w-full mt-2 bg-gray-200 hover:bg-gray-300 text-gray-900 font-semibold py-2 rounded-lg border border-gray-400 transition cursor-pointer">
         Gå til betaling
       </button>
     </section >
