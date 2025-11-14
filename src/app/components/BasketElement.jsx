@@ -9,7 +9,13 @@ const ProductCard = ({ productDetails }) => {
   console.log("in basket:", basketProducts);
 
   return (
-    <button onClick={() => addToBasket(productDetails)}>Add to basket</button>
+    <button
+      onClick={() => addToBasket(productDetails)}
+      className="flex w-full cursor-pointer items-center justify-between rounded-full bg-[var(--orange)] px-6 py-3 text-base text-[var(--cream)]"
+    >
+      <span>Add to Cart</span>
+      <span className="text-2xl leading-none font-light">+</span>
+    </button>
   );
   if (basketProducts.includes(id)) {
     console.log("Favorite:", id);
