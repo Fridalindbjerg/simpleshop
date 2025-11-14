@@ -7,16 +7,8 @@ const CategoryElement = ({ category }) => {
   return (
     <button
       onClick={() => router.push(`?category=${category}`)}
-      className="flex shrink-0 items-center gap-3 rounded-full border border-gray-300 px-4 py-2 text-sm font-medium text-gray-300"
+      className="p-0 text-left text-2xl leading-tight hover:underline"
     >
-      <Image
-        className="rounded-full object-cover"
-        loading="eager"
-        alt="cat"
-        src="https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp"
-        width={30}
-        height={30}
-      />
       {category}
     </button>
   );

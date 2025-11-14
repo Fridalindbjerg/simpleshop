@@ -25,30 +25,35 @@ const FetchProduct = async ({ category }) => {
   const { products } = await response.json();
 
   return products.map((product) => (
-    <div key={product.id} className="rounded-lg shadow-md">
-      <div className="relative">
-        <BasketElement productDetails={product} />
-
+    <div key={product.id} className="group flex h-full flex-col">
+      <div className="grid bg-[#efede7]">
         <Image
           loading="eager"
-          className="h-auto max-w-full rounded-lg"
+          className="col-start-1 row-start-1 h-64 w-full object-contain"
           src={product.thumbnail}
           width={300}
           height={200}
           alt={product.title}
-        ></Image>
-        <div className="absolute top-1 right-3 rounded-full bg-black/40 p-1">
-          <CiStar size={20} color="black" />
+        />
+
+        <div className="col-start-1 row-start-1 mx-2 mb-2 translate-y-4 self-end opacity-0 transition group-hover:translate-y-0 group-hover:opacity-100">
+          <BasketElement productDetails={product} />
         </div>
       </div>
-      <div className="p-2">
-        <div className="flex justify-between">
-          <h2>
-            <Link href={`/detail/${product.id}`}>{product.title}</Link>
-          </h2>
-          <h3>{product.price}</h3>
-        </div>
-        <h3>{product.brand ? product.brand : "Unknown"}</h3>
+
+      <div>
+        <Link
+          href={`/detail/${product.id}`}
+          className="flex flex-col gap-1 pt-3 pb-3"
+        >
+          <h3 className="text-sm">
+            {product.brand ? product.brand : "Unknown"}
+          </h3>
+
+          <h2 className="truncate text-xl">{product.title}</h2>
+
+          <h3 className="mt-auto text-sm">${product.price}</h3>
+        </Link>
       </div>
     </div>
   ));

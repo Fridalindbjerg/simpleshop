@@ -12,7 +12,7 @@ export default function Home({ searchParams }) {
       <div>
         <Basket />
       </div>
-      <div className="flex">
+      <div className="grid items-stretch gap-6 md:grid-cols-4">
         <CategoryList />
       </div>
 
@@ -26,7 +26,7 @@ export default function Home({ searchParams }) {
 async function ProductListContainer({ searchParams }) {
   const { category } = await searchParams;
   return (
-    <div className="m-4 grid grid-cols-2 gap-4">
+    <div className="grid w-full grid-cols-[repeat(auto-fit,minmax(0,300px))] justify-center gap-4">
       <ProductList category={category} />
     </div>
   );

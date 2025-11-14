@@ -10,9 +10,10 @@ const ProductCard = ({ productDetails }) => {
   return (
     <button
       onClick={() => addToBasket(productDetails)}
-      className="bg-green-200 p-2 rounded cursor-pointer"
+      className="flex w-full cursor-pointer items-center justify-between rounded-full bg-[var(--orange)] px-6 py-3 text-base text-[var(--cream)]"
     >
-      Læg i kurv
+      <span>Add to Cart</span>
+      <span className="text-2xl leading-none font-light">+</span>
     </button>
   );
 };
