@@ -17,21 +17,21 @@ const Basket = () => {
 
             <div className="w-full max-w-5xl rounded-xl p-10">
 
-                {/* TABLE HEADERS */}
+                {/* menu */}
                 <div className="flex pb-4 text-(--orange) font-medium">
                     <span className="flex-[2]">Item</span>
                     <span className="flex-[1] text-center">Category</span>
                     <span className="w-20 text-right">Price</span>
                 </div>
 
-                {/* EMPTY STATE */}
+                {/* empty basket */}
                 {basketProducts.length === 0 && (
                     <p className=" py-10 text-center">
                         🛒 Your basket is empty
                     </p>
                 )}
 
-                {/* FULL PRODUCT ROW — EVERYTHING INSIDE MAP */}
+                {/* productrow */}
                 {basketProducts.map((item) => {
                     const qty = item.quantity || 1;
 
@@ -40,7 +40,6 @@ const Basket = () => {
                             key={item.id}
                             className="grid grid-cols-12 items-center py-6 border-b border-(--grey)"
                         >
-                            {/* ITEM + IMAGE + TITLE + QTY + REMOVE */}
                             <div className="col-span-6 flex gap-4 items-center">
                                 {item.thumbnail && (
 
@@ -81,7 +80,7 @@ const Basket = () => {
                                 {item.category}
                             </div>
 
-                            {/* PRICE */}
+                            {/* price */}
                             <div className="col-span-3 text-right">
                                 ${item.price}
                             </div>
@@ -89,7 +88,7 @@ const Basket = () => {
                     );
                 })}
 
-                {/* TOTALS */}
+                {/* total sum */}
                 <div className="w-full flex justify-end mt-10">
                     <div className="w-64 text-lg">
                         <div className="flex justify-between py-2 border-b border-(--grey)">
@@ -105,14 +104,12 @@ const Basket = () => {
 
             </div>
 
-            {/* CHECKOUT BUTTON */}
             <div className="w-full flex justify-center mt-8">
                 <button className="bg-[var(--orange)] text-white font-medium text-xl px-10 py-3 rounded-full hover:opacity-90 transition cursor-pointer">
                     Checkout
                 </button>
             </div>
 
-            {/* CONTINUE SHOPPING */}
             <Link href="/">
                 <p className="text-center text-[var(--orange)] mt-4 underline cursor-pointer">
                     Continue shopping
