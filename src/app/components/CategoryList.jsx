@@ -12,25 +12,16 @@ const CategoryList = () => {
 const FetchCategories = async () => {
   const response = await fetch("https://dummyjson.com/products/category-list");
   const categories = await response.json();
-  return;
-
-  <select className="rounded border px-3 py-2">
-    <option>Vælg en kategori…</option>
-    {categories.map((category, index) => (
-      <option key={index}>{category}</option>
-    ))}
-  </select>;
+  return categories.map((category, index) => (
+    <CategoryElement category={category} key={index} />
+  ));
 };
 
 export default CategoryList;
 
-// categories.map((category, index) => (
-//   <CategoryElement category={category} key={index} />
-// ))
-
 // <select className="border rounded px-3 py-2">
 //   <option>Vælg en kategori…</option>
-//   {categories.map((category, index) => (
-//     <option key={index}>{category}</option>
+//   {categories.map((category, i) => (
+//     <option key={i}>{category}</option>
 //   ))}
 // </select>
