@@ -21,3 +21,10 @@ const FetchCategories = async () => {
 };
 
 export default CategoryList;
+
+// <select className="border rounded px-3 py-2">
+//   <option>Vælg en kategori…</option>
+//   {categories.map((category, i) => (
+//     <option key={i}>{category}</option>
+//   ))}
+// </select>

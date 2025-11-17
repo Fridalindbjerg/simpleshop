@@ -9,14 +9,12 @@ import Basket from "./components/Basket";
 export default function Home({ searchParams }) {
   return (
     <>
-      <div>
+      <div className="flex">
+        <Suspense>
+          <ProductListContainer searchParams={searchParams} />
+        </Suspense>
         <Basket />
       </div>
-     
-
-      <Suspense>
-        <ProductListContainer searchParams={searchParams} />
-      </Suspense>
     </>
   );
 }
