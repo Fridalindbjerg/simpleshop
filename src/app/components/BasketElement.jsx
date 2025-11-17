@@ -16,15 +16,23 @@ const ProductCard = ({ productDetails }) => {
   return (
     <div>
       {isInBasket ? (
-        <Link
-          href="/basket"
-          className="flex justify-between rounded-full border border-(--orange) bg-(--cream) px-6 py-3 text-(--orange)"
-        >
-          <p>Added to basket</p>
-          <div className="text-2xl leading-none font-light">
-            <IoIosArrowForward />
-          </div>
-        </Link>
+        <>
+          <Link
+            href="/basket"
+            className="flex justify-between rounded-full border border-(--orange) bg-(--cream) px-6 py-3 text-(--orange)"
+          >
+            <p>Added to basket</p>
+            <div className="text-2xl leading-none font-light">
+              <IoIosArrowForward />
+            </div>
+          </Link>
+          <button
+            className="w-8 cursor-pointer rounded-full border"
+            onClick={() => addToBasket(productDetails)}
+          >
+            +
+          </button>
+        </>
       ) : (
         <button
           onClick={() => addToBasket(productDetails)}

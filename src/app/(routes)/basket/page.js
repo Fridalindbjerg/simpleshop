@@ -2,13 +2,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import useStore from "@/app/store/basketStore";
+import { FaPlus } from "react-icons/fa";
+import { FaMinus } from "react-icons/fa";
 
 const Basket = () => {
-  const { basketProducts, removeFromBasket } = useStore();
+  const { basketProducts, removeFromBasket, addToBasket } = useStore();
 
   const totalPrice = Number(
     basketProducts
-      .reduce((sum, item) => sum + Number(item.price), 0)
+      .reduce(
+        (sum, item) =>
+          sum + (parseFloat(item.price) || 0) * (item.quantity || 1),
+        0,
+      )
       .toFixed(2),
   );
 
@@ -19,8 +25,9 @@ const Basket = () => {
       <div className="w-full max-w-5xl rounded-xl p-10">
         {/* menu */}
         <div className="flex pb-4 font-medium text-(--orange)">
-          <span className="flex-[2]">Item</span>
-          <span className="flex-[1] text-center">Category</span>
+          <span className="flex-2">Item</span>
+          <span className="flex-2">QTY</span>
+          <span className="flex-1 text-center">Category</span>
           <span className="w-20 text-right">Price</span>
         </div>
 
@@ -31,8 +38,6 @@ const Basket = () => {
 
         {/* productrow */}
         {basketProducts.map((item) => {
-          const qty = item.quantity || 1;
-
           return (
             <div
               key={item.id}
@@ -40,38 +45,52 @@ const Basket = () => {
             >
               <div className="col-span-6 flex items-center gap-4">
                 {item.thumbnail && (
-                  <Link
-                    href={`/detail/${item.id}`}
-                    className="flex items-center gap-4"
-                  >
-                    {item.thumbnail && (
-                      <Image
-                        src={item.thumbnail}
-                        width={64}
-                        height={64}
-                        alt={item.title}
-                        className="cursor-pointer rounded-md border border-(--orange)"
-                      />
-                    )}
+                  <div>
+                    <Link
+                      href={`/detail/${item.id}`}
+                      className="flex items-center gap-4"
+                    >
+                      {item.thumbnail && (
+                        <Image
+                          src={item.thumbnail}
+                          width={64}
+                          height={64}
+                          alt={item.title}
+                          className="cursor-pointer rounded-md border border-(--orange)"
+                        />
+                      )}
 
-                    <span className="cursor-pointer font-medium hover:underline">
-                      {item.title}
-                    </span>
-                  </Link>
+                      <span className="cursor-pointer font-medium hover:underline">
+                        {item.title}
+                      </span>
+                    </Link>
+
+                    <div>
+                      <button onClick={() => addToBasket(item)}>
+                        <FaPlus />
+                      </button>
+                      <span className="cursor-pointer font-medium hover:underline">
+                        {item.quantity}
+                      </span>
+                      <button onClick={() => removeFromBasket(item.id)}>
+                        <FaMinus />
+                      </button>
+                    </div>
+                  </div>
                 )}
 
                 <div className="flex flex-col">
                   {/* <span className="font-medium">{item.title}</span> */}
 
                   {/* Remove button */}
-                  <div className="mt-2 flex h-5 w-5 items-center justify-center rounded-full border">
+                  {/* <div className="mt-2 flex h-5 w-5 items-center justify-center rounded-full border">
                     <button
                       onClick={() => removeFromBasket(item.id)}
-                      className="cursor-pointer text-lg leading-none text-[var(--orange)]"
+                      className="cursor-pointer text-lg leading-none text-(--orange)"
                     >
                       ×
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 
@@ -91,7 +110,7 @@ const Basket = () => {
               <span>Total</span>
               <span>${totalPrice.toFixed(2)}</span>
             </div>
-            <div className="flex justify-between py-4 text-xl font-semibold text-[var(--orange)]">
+            <div className="flex justify-between py-4 text-xl font-semibold text-(--orange)">
               <span>Total</span>
               <span>${totalPrice.toFixed(2)}</span>
             </div>
@@ -100,13 +119,13 @@ const Basket = () => {
       </div>
 
       <div className="mt-8 flex w-full justify-center">
-        <button className="cursor-pointer rounded-full bg-[var(--orange)] px-10 py-3 text-xl font-medium text-white transition hover:opacity-90">
+        <button className="cursor-pointer rounded-full bg-(--orange) px-10 py-3 text-xl font-medium text-white transition hover:opacity-90">
           Checkout
         </button>
       </div>
 
       <Link href="/">
-        <p className="mt-4 cursor-pointer text-center text-[var(--orange)] underline">
+        <p className="mt-4 cursor-pointer text-center text-(--orange) underline">
           Continue shopping
         </p>
       </Link>
