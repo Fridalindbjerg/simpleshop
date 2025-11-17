@@ -30,6 +30,41 @@ export default function RootLayout({ children }) {
         className={`${poppins.variable} antialiased`}
       >
         {children}
+
+        <footer className="bg-[var(--orange)] text-white">
+          <div className="p-10 mx-auto text-center px-4">
+
+            <h6 className="text-xl font-semibold mb-2">Let's Keep in Touch</h6>
+            <p className="text-white/90 mb-6">
+              Sign-up for 10% off your first online order
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
+
+              <input
+                type="email"
+                placeholder="Email"
+                className="w-full px-4 py-2 rounded-full border border-white/50 text-[var(--cream)]"
+              />
+
+              <button
+                type="button"
+                className="px-6 py-2 bg-[var(--cream)] text-[var(--orange)] font-semibold rounded-full hover:opacity-90 transition"
+              >
+                Subscribe
+              </button>
+
+            </div>
+          </div>
+
+          {/* Centered border */}
+          <div className="mx-auto border-t border-white/50 mt-"></div>
+
+          <p className="text-center py-4 text-white/80 text-sm">
+            &copy; 2025 SimpleShop. All rights reserved.
+          </p>
+        </footer>
+
       </body>
     </html>
   );
