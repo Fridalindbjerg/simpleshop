@@ -14,7 +14,7 @@ const Basket = () => {
   //   2.Vis denne længde i BasketButton komponenten ved siden af "Kurv" teksten
   // 3. Lav en const DisplayProducts som er basketProducts forkortet til kun at vise hvert individuelt produkt 1 gang
   return (
-    <section className="max-w-xl bg-(--orange) p-4 text-(--cream)">
+    <section className="bg-(--orange) p-4 text-(--cream)">
       <h2 className="text-center text-2xl font-semibold">Your Cart</h2>
       {basketProducts.length === 0 ? (
         <p className="m-10 flex justify-center"> Your basket is empty</p>
@@ -46,12 +46,14 @@ const Basket = () => {
           </div>
         </ul>
       )}
-      <button
-        href="/basket"
-        className="mx-auto flex rounded-full border border-(--orange) bg-(--cream) px-8 py-2 text-(--orange) hover:cursor-pointer hover:border-(--cream) hover:bg-(--orange) hover:text-(--cream)"
-      >
-        Go to basket
-      </button>
+      <div className="flex">
+        <Link
+          href="/basket"
+          className="mx-auto block rounded-full border border-(--orange) bg-(--cream) px-8 py-2 text-(--orange) hover:cursor-pointer hover:border-(--cream) hover:bg-(--orange) hover:text-(--cream)"
+        >
+          Go to basket
+        </Link>
+      </div>
     </section>
   );
 };
