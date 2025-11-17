@@ -1,5 +1,6 @@
 "use client";
 import useStore from "../store/basketStore";
+import Link from "next/link";
 
 const Basket = () => {
   const { basketProducts, addToBasket, removeFromBasket } = useStore();
@@ -49,9 +50,11 @@ const Basket = () => {
         </ul>
       )
       }
-      <button className="w-full mt-2 bg-gray-200 hover:bg-gray-300 text-gray-900 font-semibold py-2 rounded-lg border border-gray-400 transition cursor-pointer">
-        Gå til betaling
-      </button>
+      <Link href="/basket">
+        <button className="w-full mt-2 bg-gray-200 hover:bg-gray-300 text-gray-900 font-semibold py-2 rounded-lg border border-gray-400 transition cursor-pointer">
+          Gå til betaling
+        </button>
+      </Link>
     </section >
   );
 };

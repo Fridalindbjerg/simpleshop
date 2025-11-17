@@ -19,6 +19,7 @@ async function Detail({ params }) {
         / {product.title}
       </div>
       <div className="mx-4 grid grid-cols-2">
+
         <Image
           loading="eager"
           alt="product image"

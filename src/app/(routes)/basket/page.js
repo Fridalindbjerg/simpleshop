@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import useStore from "@/app/store/basketStore";
 
 const Basket = () => {
@@ -42,17 +43,26 @@ const Basket = () => {
                             {/* ITEM + IMAGE + TITLE + QTY + REMOVE */}
                             <div className="col-span-6 flex gap-4 items-center">
                                 {item.thumbnail && (
-                                    <Image
-                                        src={item.thumbnail}
-                                        width={64}
-                                        height={64}
-                                        alt={item.title}
-                                        className="rounded-md border border-(--orange)"
-                                    />
+
+                                    <Link href={`/detail/${item.id}`} className="flex items-center gap-4">
+                                        {item.thumbnail && (
+                                            <Image
+                                                src={item.thumbnail}
+                                                width={64}
+                                                height={64}
+                                                alt={item.title}
+                                                className="rounded-md border border-(--orange) cursor-pointer"
+                                            />
+                                        )}
+
+                                        <span className="font-medium hover:underline cursor-pointer">
+                                            {item.title}
+                                        </span>
+                                    </Link>
                                 )}
 
                                 <div className="flex flex-col ">
-                                    <span className="font-medium">{item.title}</span>
+                                    {/* <span className="font-medium">{item.title}</span> */}
 
                                     {/* Remove button */}
                                     <div className="flex items-center justify-center mt-2 border rounded-full w-5 h-5">
@@ -103,9 +113,11 @@ const Basket = () => {
             </div>
 
             {/* CONTINUE SHOPPING */}
-            <p className="text-center text-[var(--orange)] mt-4 underline cursor-pointer">
-                Continue shopping
-            </p>
+            <Link href="/">
+                <p className="text-center text-[var(--orange)] mt-4 underline cursor-pointer">
+                    Continue shopping
+                </p>
+            </Link>
         </main>
     );
 };
