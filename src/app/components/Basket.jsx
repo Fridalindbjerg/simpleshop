@@ -5,10 +5,7 @@ import Link from "next/link";
 const Basket = () => {
   const { basketProducts, addToBasket, removeFromBasket } = useStore();
 
-  // const totalPrice = basketProducts.reduce(
-  //   (sum, item) => sum + Number(item.price),
-  //   0,
-  // );
+ 
 
   const totalPrice = Number(
     basketProducts
@@ -16,9 +13,6 @@ const Basket = () => {
       .toFixed(2),
   );
 
-  //   1.Filtrer på de individuelle produkter i kurven for at få længden af arrayet (som er kvantiteten)
-  //   2.Vis denne længde i BasketButton komponenten ved siden af "Kurv" teksten
-  // 3. Lav en const DisplayProducts som er basketProducts forkortet til kun at vise hvert individuelt produkt 1 gang
   return (
     <section className="bg-(--orange) p-4 text-(--cream)">
       <h2 className="text-center text-2xl font-semibold">Your Cart</h2>
@@ -39,9 +33,9 @@ const Basket = () => {
                 >
                   ×
                 </button>
-                <div className="flex w-full justify-between">
-                  <span className="">{item.title}</span>
-                  <span className="">$ {item.price}</span>
+                <div className="flex w-full justify-between gap-6">
+                  <span className="truncate">{item.title}</span>
+                  <span className="whitespace-nowrap">$ {item.price}</span>
                 </div>
               </li>
             );
