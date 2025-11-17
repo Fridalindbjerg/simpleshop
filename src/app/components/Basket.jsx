@@ -26,12 +26,12 @@ const Basket = () => {
         <p className="m-10 flex justify-center"> Your basket is empty</p>
       ) : (
         <ul className="flex flex-col gap-4">
-          {basketProducts.map((item) => {
-            console.log("in basket:", item.quantity);
+          {basketProducts.map((item, index) => {
+            // console.log("in basket:", item.quantity);
             return (
               <li
                 className="flex items-center border-b border-(--cream) pt-4"
-                key={item.id}
+                key={index}
               >
                 <button
                   onClick={() => removeFromBasket(item.id)}
