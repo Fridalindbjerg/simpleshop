@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FaStar } from "react-icons/fa";
+import Basket from "../../basket/page";
+import BasketElement from "../../../components/BasketElement";
 
 async function Detail({ params }) {
   const { id } = await params;
@@ -18,7 +20,7 @@ async function Detail({ params }) {
         </Link>
         / {product.title}
       </div>
-      <div className="mx-4 grid grid-cols-2">
+      <div className="mx-4 grid grid-cols-1 md:grid-cols-2">
         <Image
           loading="eager"
           alt="product image"
@@ -53,10 +55,12 @@ async function Detail({ params }) {
                   {/* <p className="w-fit rounded-full border px-6 py-2"> */}
                   WEIGHT: {product.weight}
                 </p>
-                <div className="flex justify-between rounded-full border bg-(--orange) px-6 py-2 text-(--cream)">
+                <div className="flex justify-between rounded-full border bg-(--cream) px-6 py-2 text-(--orange)">
                   <p className="text-2xl">${product.price}</p>
-                  <button className="text-2xl">Add to Basket</button>
                 </div>
+              </div>
+              <div className="w-full">
+                <BasketElement productDetails={product} />
               </div>
             </div>
 
