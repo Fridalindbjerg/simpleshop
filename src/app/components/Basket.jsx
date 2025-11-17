@@ -50,7 +50,7 @@ const Basket = () => {
         href="/basket"
         className="mx-auto flex rounded-full border border-(--orange) bg-(--cream) px-8 py-2 text-(--orange) hover:cursor-pointer hover:border-(--cream) hover:bg-(--orange) hover:text-(--cream)"
       >
-        Go to cart
+        Go to basket
       </button>
     </section>
   );
