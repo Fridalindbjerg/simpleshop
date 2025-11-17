@@ -9,10 +9,6 @@ import Basket from "./components/Basket";
 export default function Home({ searchParams }) {
   return (
     <>
-      <div className="grid items-stretch gap-6 md:grid-cols-4">
-        <CategoryList />
-      </div>
-
       <div className="flex">
         <Suspense>
           <ProductListContainer searchParams={searchParams} />

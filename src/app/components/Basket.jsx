@@ -5,9 +5,15 @@ import Link from "next/link";
 const Basket = () => {
   const { basketProducts, addToBasket, removeFromBasket } = useStore();
 
-  const totalPrice = basketProducts.reduce(
-    (sum, item) => sum + Number(item.price),
-    0,
+  // const totalPrice = basketProducts.reduce(
+  //   (sum, item) => sum + Number(item.price),
+  //   0,
+  // );
+
+  const totalPrice = Number(
+    basketProducts
+      .reduce((sum, item) => sum + Number(item.price), 0)
+      .toFixed(2),
   );
 
   //   1.Filtrer på de individuelle produkter i kurven for at få længden af arrayet (som er kvantiteten)
