@@ -1,5 +1,6 @@
 "use client";
 import useStore from "../store/basketStore";
+import Link from "next/link";
 
 const Basket = () => {
   const { basketProducts, addToBasket, removeFromBasket } = useStore();
