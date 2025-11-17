@@ -5,8 +5,6 @@ import Link from "next/link";
 const Basket = () => {
   const { basketProducts, addToBasket, removeFromBasket } = useStore();
 
- 
-
   const totalPrice = Number(
     basketProducts
       .reduce((sum, item) => sum + Number(item.price), 0)
@@ -14,8 +12,8 @@ const Basket = () => {
   );
 
   return (
-    <section className="bg-(--orange) p-4 text-(--cream)">
-      <h2 className="text-center text-2xl font-semibold">Your Cart</h2>
+    <section className="bg-(--orange) p-8 text-(--cream)">
+      <h2 className="text-center text-2xl">Your Cart</h2>
       {basketProducts.length === 0 ? (
         <p className="m-10 flex justify-center"> Your basket is empty</p>
       ) : (
