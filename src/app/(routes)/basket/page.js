@@ -26,7 +26,7 @@ const Basket = () => {
 
         {/* empty basket */}
         {basketProducts.length === 0 && (
-          <p className="py-10 text-center">🛒 Your basket is empty</p>
+          <p className="py-10 text-center"> Your basket is empty</p>
         )}
 
         {/* productrow */}
