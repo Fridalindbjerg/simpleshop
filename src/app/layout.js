@@ -48,7 +48,6 @@ export default function RootLayout({ children }) {
               </button>
 
               <div className="absolute top-full left-0 -ml-8 hidden w-screen max-w-screen backdrop-blur-xl group-hover:block">
-                
                 <div className="grid w-screen grid-cols-2 gap-x-12 gap-y-2 px-8 pt-4 pb-4 md:grid-cols-[repeat(auto-fit,minmax(0,350px))]">
                   <CategoryList />
                 </div>
@@ -66,10 +65,6 @@ export default function RootLayout({ children }) {
           </div>
 
           <div className="flex items-center justify-end gap-3 justify-self-end">
-            <Link href="/basket" className="text-xl text-(--orange)">
-              <SlBasket size={25} />
-            </Link>
-
             {/* Stor skærm (searchbar) */}
             <form className="hidden w-56 items-center gap-2 rounded-full bg-white/80 px-4 py-2 backdrop-blur md:flex">
               <input
@@ -79,6 +74,9 @@ export default function RootLayout({ children }) {
               />
               <IoSearchOutline size={25} className="text-(--orange)" />
             </form>
+            <Link href="/basket" className="text-xl text-(--orange)">
+              <SlBasket size={25} />
+            </Link>
 
             {/* Mobil kun search ikon vises */}
             <button

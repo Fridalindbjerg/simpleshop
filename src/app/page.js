@@ -43,7 +43,7 @@ export default function Home({ searchParams }) {
         </section>
 
         <section className="flex items-center justify-center p-10">
-          <h2 className="text-7xl font-(--font-playfair) text-(--orange)">
+          <h2 className="font-(family-name:--font-playfair-display) text-7xl text-(--orange)">
             / Products
           </h2>
         </section>
