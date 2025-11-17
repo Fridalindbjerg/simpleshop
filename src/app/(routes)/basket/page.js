@@ -2,26 +2,29 @@
 import Image from "next/image";
 import Link from "next/link";
 import useStore from "@/app/store/basketStore";
+import { FaPlus } from "react-icons/fa";
+import { FaMinus } from "react-icons/fa";
 
 const Basket = () => {
-  const { basketProducts, removeFromBasket } = useStore();
+  const { basketProducts, removeFromBasket, addToBasket } = useStore();
 
   const totalPrice = Number(
     basketProducts
-      .reduce((sum, item) => sum + Number(item.price), 0)
+      .reduce((sum, item) => sum + (item.price || 0) * (item.quantity || 1), 0)
       .toFixed(2),
   );
 
   return (
-    <main className="flex min-h-screen w-full flex-col items-center px-4 py-10">
-      <h1 className="mb-10">Your Basket</h1>
+    <main className="flex flex-col items-center px-4 py-10">
+      <h1 className="mb-10 text-5xl">Your Basket</h1>
 
-      <div className="w-full max-w-5xl rounded-xl p-10">
+      <div className="w-full max-w-4xl">
         {/* menu */}
-        <div className="flex pb-4 font-medium text-(--orange)">
-          <span className="flex-[2]">Item</span>
-          <span className="flex-[1] text-center">Category</span>
-          <span className="w-20 text-right">Price</span>
+        <div className="grid grid-cols-6 pb-4 font-medium text-(--orange)">
+          <span className="">QTY</span>
+          <span className="col-span-3">Item</span>
+          <span className="">Category</span>
+          <span className="text-right">Price</span>
         </div>
 
         {/* empty basket */}
@@ -31,82 +34,74 @@ const Basket = () => {
 
         {/* productrow */}
         {basketProducts.map((item) => {
-          const qty = item.quantity || 1;
-
           return (
             <div
               key={item.id}
-              className="grid grid-cols-12 items-center border-b border-(--grey) py-6"
+              className="grid grid-cols-6 border-b border-(--grey) py-6"
             >
-              <div className="col-span-6 flex items-center gap-4">
+              <div className="flex items-center gap-4">
+                <button onClick={() => addToBasket(item)}>
+                  <FaPlus size={13} />
+                </button>
+                <span className="cursor-pointer font-medium hover:underline">
+                  {item.quantity}
+                </span>
+                <button onClick={() => removeFromBasket(item.id)}>
+                  <FaMinus size={13} />
+                </button>
+              </div>
+              <div className="col-span-3 flex items-center gap-4">
                 {item.thumbnail && (
-                  <Link
-                    href={`/detail/${item.id}`}
-                    className="flex items-center gap-4"
-                  >
-                    {item.thumbnail && (
-                      <Image
-                        src={item.thumbnail}
-                        width={64}
-                        height={64}
-                        alt={item.title}
-                        className="cursor-pointer rounded-md border border-(--orange)"
-                      />
-                    )}
-
-                    <span className="cursor-pointer font-medium hover:underline">
-                      {item.title}
-                    </span>
-                  </Link>
-                )}
-
-                <div className="flex flex-col">
-                  {/* <span className="font-medium">{item.title}</span> */}
-
-                  {/* Remove button */}
-                  <div className="mt-2 flex h-5 w-5 items-center justify-center rounded-full border">
-                    <button
-                      onClick={() => removeFromBasket(item.id)}
-                      className="cursor-pointer text-lg leading-none text-[var(--orange)]"
+                  <div>
+                    <Link
+                      href={`/detail/${item.id}`}
+                      className="flex items-center gap-4"
                     >
-                      ×
-                    </button>
+                      {item.thumbnail && (
+                        <Image
+                          src={item.thumbnail}
+                          width={64}
+                          height={64}
+                          alt={item.title}
+                          className="cursor-pointer rounded-md border border-(--orange)"
+                        />
+                      )}
+
+                      <span className="cursor-pointer font-medium hover:underline">
+                        {item.title}
+                      </span>
+                    </Link>
                   </div>
-                </div>
+                )}
               </div>
 
               {/* category */}
-              <div className="col-span-3 text-right">{item.category}</div>
+              <div className="">{item.category}</div>
 
               {/* price */}
-              <div className="col-span-3 text-right">${item.price}</div>
+              <div className="text-right">
+                ${(item.price * item.quantity).toFixed(2)}
+              </div>
             </div>
           );
         })}
 
         {/* total sum */}
-        <div className="mt-10 flex w-full justify-end">
-          <div className="w-64 text-lg">
-            <div className="flex justify-between border-b border-(--grey) py-2">
-              <span>Total</span>
-              <span>${totalPrice.toFixed(2)}</span>
-            </div>
-            <div className="flex justify-between py-4 text-xl font-semibold text-[var(--orange)]">
-              <span>Total</span>
-              <span>${totalPrice.toFixed(2)}</span>
-            </div>
-          </div>
+
+        <div className="grid grid-cols-6 py-4 text-xl font-semibold text-(--orange)">
+          <span className="col-start-5">Total</span>
+          <span className="text-right">${totalPrice}</span>
         </div>
       </div>
 
       <div className="mt-8 flex w-full justify-center">
-        <button className="cursor-pointer rounded-full bg-[var(--orange)] px-10 py-3 text-xl font-medium text-white transition hover:opacity-90">
+        <button className="cursor-pointer rounded-full bg-(--orange) px-10 py-3 text-xl font-medium text-white transition hover:opacity-90">
           Checkout
         </button>
       </div>
 
       <Link href="/">
-        <p className="mt-4 cursor-pointer text-center text-[var(--orange)] underline">
+        <p className="mt-8 cursor-pointer text-center text-(--orange) underline">
           Continue shopping
         </p>
       </Link>

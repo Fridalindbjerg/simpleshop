@@ -4,34 +4,40 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { MdFavorite } from "react-icons/md";
 import Link from "next/link";
 import { IoIosArrowForward } from "react-icons/io";
+import { FaPlus } from "react-icons/fa";
+import { FaMinus } from "react-icons/fa";
 
 const ProductCard = ({ productDetails }) => {
   const { basketProducts, addToBasket, removeFromBasket } = useStore();
   console.log("in basket:", basketProducts);
 
-  const isInBasket = basketProducts.some(
+  const isInBasket = basketProducts.find(
     (product) => product.id === productDetails.id,
   );
+  const quantity = isInBasket?.quantity || 0;
 
   return (
     <div>
       {isInBasket ? (
-        <>
-          <Link
-            href="/basket"
-            className="flex justify-between rounded-full border border-(--orange) bg-(--cream) px-6 py-3 text-(--orange)"
-          >
-            <p>Added to basket</p>
-            <div className="text-2xl leading-none font-light">
-              <IoIosArrowForward />
-            </div>
+        <div className="flex justify-between rounded-full border border-(--orange) bg-(--cream) px-6 py-3 text-(--orange)">
+          <Link href="/basket" className="hover:underline">
+            <p>Added to basket ({quantity})</p>
           </Link>
-          <button className="border w-8 rounded-full cursor-pointer"
-            onClick={() => addToBasket(productDetails)}
-          >
-            +
-          </button>
-        </>
+          <div className="flex place-items-center gap-4">
+            <div
+              className="text-2xl leading-none font-light"
+              onClick={() => removeFromBasket(productDetails.id)}
+            >
+              <FaMinus size={17} />
+            </div>
+            <div
+              className="text-2xl leading-none font-light"
+              onClick={() => addToBasket(productDetails)}
+            >
+              <FaPlus size={17} />
+            </div>
+          </div>
+        </div>
       ) : (
         <button
           onClick={() => addToBasket(productDetails)}
