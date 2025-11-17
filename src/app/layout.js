@@ -1,11 +1,21 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Poppins } from "next/font/google";
+import { Poppins, Playfair_Display } from "next/font/google";
+import CategoryList from "./components/CategoryList";
+import { SlBasket } from "react-icons/sl";
+import { IoSearchOutline } from "react-icons/io5";
+import Link from "next/link";
 
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
   weight: ["200", "400", "600", "700"],
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair-display",
+  display: "swap",
 });
 
 const geistSans = Geist({
@@ -26,45 +36,91 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${poppins.variable} antialiased`}
-      >
+      <body className={`${poppins.variable} ${playfair.variable} antialiased`}>
+        <header className="sticky top-0 grid grid-cols-3 bg-(--cream) px-8 py-4 transition-transform duration-300">
+          <nav className="flex items-center justify-self-start">
+            <div className="group relative">
+              <button
+                type="button"
+                className="text-lg text-(--orange) hover:underline"
+              >
+                Categories
+              </button>
+
+              <div className="absolute top-full left-0 -ml-8 hidden w-screen max-w-screen backdrop-blur-xl group-hover:block">
+                
+                <div className="grid w-screen grid-cols-2 gap-x-12 gap-y-2 px-8 pt-4 pb-4 md:grid-cols-[repeat(auto-fit,minmax(0,350px))]">
+                  <CategoryList />
+                </div>
+              </div>
+            </div>
+          </nav>
+
+          <div className="flex justify-center justify-self-center">
+            <a
+              href="/"
+              className="font-playfair font-(family-name:--font-playfair-display) text-4xl text-(--orange)"
+            >
+              T T T_
+            </a>
+          </div>
+
+          <div className="flex items-center justify-end gap-3 justify-self-end">
+            <Link href="/basket" className="text-xl text-(--orange)">
+              <SlBasket size={25} />
+            </Link>
+
+            {/* Stor skærm (searchbar) */}
+            <form className="hidden w-56 items-center gap-2 rounded-full bg-white/80 px-4 py-2 backdrop-blur md:flex">
+              <input
+                type="text"
+                placeholder="Search items..."
+                className="w-full bg-transparent text-sm outline-none placeholder:text-(--orange)/50"
+              />
+              <IoSearchOutline size={25} className="text-(--orange)" />
+            </form>
+
+            {/* Mobil kun search ikon vises */}
+            <button
+              type="button"
+              className="text-2xl text-(--orange) md:hidden"
+            >
+              <IoSearchOutline />
+            </button>
+          </div>
+        </header>
+
         {children}
 
-        <footer className="bg-[var(--orange)] text-white">
-          <div className="p-10 mx-auto text-center px-4">
-
-            <h6 className="text-xl font-semibold mb-2">Let's Keep in Touch</h6>
-            <p className="text-white/90 mb-6">
+        <footer className="bg-(--orange) text-white">
+          <div className="mx-auto p-10 px-4 text-center">
+            <h6 className="mb-2 text-xl font-semibold">Let's Keep in Touch</h6>
+            <p className="mb-6 text-white/90">
               Sign-up for 10% off your first online order
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
-
+            <div className="mx-auto flex max-w-md flex-col justify-center gap-3 sm:flex-row">
               <input
                 type="email"
                 placeholder="Email"
-                className="w-full px-4 py-2 rounded-full border border-white/50 text-[var(--cream)]"
+                className="w-full rounded-full border border-white/50 px-4 py-2 text-(--cream)"
               />
 
               <button
                 type="button"
-                className="px-6 py-2 bg-[var(--cream)] text-[var(--orange)] font-semibold rounded-full hover:opacity-90 transition"
+                className="rounded-full bg-(--cream) px-6 py-2 font-semibold text-(--orange) transition hover:opacity-90"
               >
                 Subscribe
               </button>
-
             </div>
           </div>
 
-          {/* Centered border */}
-          <div className="mx-auto border-t border-white/50 mt-"></div>
+          <div className="mt- mx-auto border-t border-white/50"></div>
 
-          <p className="text-center py-4 text-white/80 text-sm">
+          <p className="py-4 text-center text-sm text-white/80">
             &copy; 2025 SimpleShop. All rights reserved.
           </p>
         </footer>
-
       </body>
     </html>
   );

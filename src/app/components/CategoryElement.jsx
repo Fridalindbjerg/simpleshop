@@ -6,7 +6,7 @@ const CategoryElement = ({ category }) => {
   return (
     <button
       onClick={() => router.push(`?category=${category}`)}
-      className="p-0 text-left text-2xl leading-tight hover:underline"
+      className="p-0 text-left text-lg leading-tight hover:underline"
     >
       {category}
     </button>
