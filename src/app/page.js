@@ -12,9 +12,7 @@ export default function Home({ searchParams }) {
       <div>
         <Basket />
       </div>
-      <div className="grid items-stretch gap-6 md:grid-cols-4">
-        <CategoryList />
-      </div>
+     
 
       <Suspense>
         <ProductListContainer searchParams={searchParams} />
