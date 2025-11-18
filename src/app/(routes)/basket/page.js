@@ -10,7 +10,7 @@ const Basket = () => {
 
   const totalPrice = Number(
     basketProducts
-      .reduce((sum, item) => sum + (item.price || 0) * (item.quantity || 1), 0)
+      .reduce((sum, item) => sum + Number(item.price), 0)
       .toFixed(2),
   );
 
