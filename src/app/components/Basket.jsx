@@ -1,6 +1,8 @@
 "use client";
 import useStore from "../store/basketStore";
 import Link from "next/link";
+import { FaPlus } from "react-icons/fa";
+import { FaMinus } from "react-icons/fa";
 
 const Basket = () => {
   const { basketProducts, addToBasket, removeFromBasket } = useStore();
@@ -12,7 +14,7 @@ const Basket = () => {
   );
 
   return (
-    <section className="bg-(--orange) p-8 text-(--cream)">
+    <section className="sticky top-20 h-screen max-w-md self-start bg-(--orange) p-8 text-(--cream)">
       <h2 className="text-center text-2xl">Your Cart</h2>
       {basketProducts.length === 0 ? (
         <p className="m-10 flex justify-center"> Your basket is empty</p>
@@ -21,19 +23,31 @@ const Basket = () => {
           {basketProducts.map((item, index) => {
             // console.log("in basket:", item.quantity);
             return (
-              <li
-                className="flex items-center border-b border-(--cream) pt-4"
-                key={index}
-              >
-                <button
-                  onClick={() => removeFromBasket(item.id)}
-                  className="pr-6 text-2xl"
-                >
-                  ×
-                </button>
-                <div className="flex w-full justify-between gap-6">
-                  <span className="truncate">{item.title}</span>
-                  <span className="whitespace-nowrap">$ {item.price}</span>
+              <li className="border-b border-(--cream) pt-4" key={index}>
+                <div className="grid grid-cols-4 gap-2">
+                  <div className="flex place-items-center gap-2">
+                    <div
+                      className="text-2xl leading-none font-light"
+                      onClick={() => removeFromBasket(item.id)}
+                    >
+                      <FaMinus size={11} />
+                    </div>
+
+                    <span className="truncate text-right">{item.quantity}</span>
+                    <div
+                      className="text-2xl leading-none font-light"
+                      onClick={() => addToBasket(item)}
+                    >
+                      <FaPlus size={11} />
+                    </div>
+                  </div>
+                  <span className="col-span-2 truncate overflow-hidden text-ellipsis">
+                    {item.title}
+                  </span>
+
+                  <span className="text-right whitespace-nowrap">
+                    $ {(item.price * item.quantity).toFixed(2)}
+                  </span>
                 </div>
               </li>
             );
