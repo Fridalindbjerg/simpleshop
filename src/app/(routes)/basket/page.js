@@ -16,7 +16,7 @@ const Basket = () => {
 
   return (
     <main className="flex flex-col items-center px-4 py-10">
-      <h1 className="mb-10 text-5xl">Your Basket/</h1>
+      <h1 className="mb-10 text-5xl font-(family-name:--font-playfair-display)">/ Your Basket</h1>
 
       <div className="w-full max-w-4xl">
         {/* menu */}

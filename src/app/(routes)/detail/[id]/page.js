@@ -22,14 +22,14 @@ async function Details({ params }) {
   const reviews = product.reviews ?? [];
 
   return (
-    <main className="">
-      <div className="flex">
+    <main className="mx-8 mb-8">
+      <div className="mb-8 flex">
         <Link href="/" className="hover:underline">
           Home
         </Link>
         / {product.title}
       </div>
-      <div className="mx-4 grid grid-cols-1 md:grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-2">
         <Image
           loading="eager"
           alt="product image"
@@ -39,7 +39,7 @@ async function Details({ params }) {
           className="rounded bg-(--grey) object-cover"
         />
         <div>
-          <div className="mx-8 flex flex-col gap-4">
+          <div className="flex flex-col gap-4">
             <h1 className="text-5xl">{product.title}</h1>
             <p className="">{product.brand}</p>
             <ul className="flex gap-2">

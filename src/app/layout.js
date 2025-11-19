@@ -91,6 +91,7 @@ export default function RootLayout({ children }) {
         {children}
 
         <footer className="bg-(--orange) text-white">
+         
           <div className="mx-auto p-10 px-4 text-center">
             <h6 className="mb-2 text-xl font-semibold">Let's Keep in Touch</h6>
             <p className="mb-6 text-white/90">

@@ -7,6 +7,7 @@ import BasketButton from "./components/BasketButton";
 import Basket from "./components/Basket";
 
 export default function Home({ searchParams }) {
+   const category = searchParams?.category ?? "Products"; 
   return (
     <>
   
@@ -36,8 +37,8 @@ export default function Home({ searchParams }) {
         </section>
 
         <section className="flex items-center justify-center p-10">
-          <h2 className="font-(family-name:--font-playfair-display) text-5xl text-(--orange) md:text-7xl">
-            / Products
+          <h2 className="font-(family-name:--font-playfair-display) text-5xl text-(--orange) md:text-5xl">
+           / {category}
           </h2>
         </section>
 
@@ -48,7 +49,7 @@ export default function Home({ searchParams }) {
             </div>
           </Suspense>
 
-          <div className="hidden md:flex md:self-stretch">
+          <div className="hidden md:flex md:self-stretch ">
             <Basket />
           </div>
         </section>
