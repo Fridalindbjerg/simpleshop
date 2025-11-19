@@ -3,8 +3,17 @@ import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 import Basket from "../../basket/page";
 import BasketElement from "../../../components/BasketElement";
+import { Suspense } from "react";
 
-async function Detail({ params }) {
+const Detail = ({ params }) => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Details params={params} />
+    </Suspense>
+  );
+};
+
+async function Details({ params }) {
   const { id } = await params;
   const response = await fetch(`https://dummyjson.com/products/${id}`);
   const product = await response.json();
