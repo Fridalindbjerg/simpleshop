@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${poppins.variable} ${playfair.variable} antialiased`}>
-        <header className="sticky top-0 grid grid-cols-3 bg-(--cream) px-8 py-4 transition-transform duration-300">
+        <header className="sticky top-0 grid grid-cols-3 bg-(--cream) px-8 py-4 transition-transform duration-300 z-50">
           <nav className="flex items-center justify-self-start">
             <div className="group relative">
               <button
