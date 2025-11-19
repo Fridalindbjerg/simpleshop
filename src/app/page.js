@@ -9,24 +9,17 @@ import Basket from "./components/Basket";
 export default function Home({ searchParams }) {
   return (
     <>
-      {/* <div className="flex">
-       <Suspense>
-       
-          <ProductListContainer searchParams={searchParams} />
-        </Suspense>
-        <Basket />
-      </div> */}
-
+  
       <main className="bg-(--cream)">
-        <section className="grid max-h-[40%] grid-cols-1 bg-(--cream) text-(--orange) md:grid-cols-1">
-          <div className="z-50 col-span-full row-span-full flex items-center justify-center px-6">
-            <div className="max-w-xl space-y-4">
+        <section className="relative grid h-[80vh] grid-cols-2 bg-(--cream) text-(--orange) md:h-[80vh]">
+          <div className="z-10 row-span-full flex items-center px-6 text-left md:col-start-1">
+            <div className="mx-auto w-full max-w-xl rounded-3xl bg-(--cream)/90 p-6 shadow-lg md:p-10 md:text-left">
               <h1 className="font-playfair text-3xl md:text-5xl">
                 Shop smarter. <br /> Waste less.
               </h1>
-              <p className="text-sm md:text-base">
-                Find dine favoritprodukter på tværs af kategorier og brands –
-                alt samlet ét sted.
+              <p className="mt-3 text-sm md:text-base">
+                Find your favourite products across categories and brands – all
+                in one place.
               </p>
             </div>
           </div>
@@ -35,15 +28,15 @@ export default function Home({ searchParams }) {
             <Image
               src="/hero.webp"
               alt="Hero image"
-              width={1200}
-              height={900}
-              className="w-full object-cover"
+              fill
+              priority
+              className="object-cover"
             />
           </div>
         </section>
 
         <section className="flex items-center justify-center p-10">
-          <h2 className="font-(family-name:--font-playfair-display) text-7xl text-(--orange)">
+          <h2 className="font-(family-name:--font-playfair-display) text-5xl text-(--orange) md:text-7xl">
             / Products
           </h2>
         </section>
@@ -55,7 +48,9 @@ export default function Home({ searchParams }) {
             </div>
           </Suspense>
 
-          <Basket />
+          <div className="hidden md:flex md:self-stretch">
+            <Basket />
+          </div>
         </section>
       </main>
     </>
