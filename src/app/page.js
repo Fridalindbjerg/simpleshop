@@ -18,8 +18,8 @@ export default function Home({ searchParams }) {
       </div> */}
 
       <main className="bg-(--cream)">
-        <section className="grid max-h-[40%] grid-cols-1 bg-(--cream) text-(--orange) md:grid-cols-2">
-          <div className="flex items-center justify-center px-6">
+        <section className="grid max-h-[40%] grid-cols-1 bg-(--cream) text-(--orange) md:grid-cols-1">
+          <div className="z-50 col-span-full row-span-full flex items-center justify-center px-6">
             <div className="max-w-xl space-y-4">
               <h1 className="font-playfair text-3xl md:text-5xl">
                 Shop smarter. <br /> Waste less.
@@ -31,7 +31,7 @@ export default function Home({ searchParams }) {
             </div>
           </div>
 
-          <div>
+          <div className="col-span-full row-span-full">
             <Image
               src="/hero.webp"
               alt="Hero image"
