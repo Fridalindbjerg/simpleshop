@@ -15,7 +15,7 @@ const Basket = () => {
 
   return (
     <section className="sticky top-20 h-screen max-w-md self-start bg-(--orange) p-8 text-(--cream)">
-      <h2 className="text-center text-2xl">Your Cart</h2>
+      <h2 className="text-center text-2xl">Your Basket</h2>
       {basketProducts.length === 0 ? (
         <p className="m-10 flex justify-center"> Your basket is empty</p>
       ) : (
